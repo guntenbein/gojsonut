@@ -19,7 +19,7 @@ func JsonCompare(t *testing.T, out interface{}, expectedJsonStr string, print bo
 	diffOpts := jsondiff.DefaultConsoleOptions()
 	res, diff := jsondiff.Compare([]byte(expectedJsonStr), []byte(outJsonStr), &diffOpts)
 
-	if res != jsondiff.ßFullMatch {
+	if res != jsondiff.FullMatch {
 		t.Errorf("the expected result is not equal to what we have: \n %s", diff)
 	}
 }

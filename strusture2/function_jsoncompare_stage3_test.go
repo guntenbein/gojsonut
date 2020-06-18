@@ -1,11 +1,9 @@
 package simple
 
 import (
-	"encoding/json"
-	"fmt"
 	"testing"
 
-	"github.com/nsf/jsondiff"
+	"github.com/guntenbein/gojsonut"
 )
 
 func TestSortJsonCompareStage3(t *testing.T) {
@@ -65,21 +63,5 @@ func TestSortJsonCompareStage3(t *testing.T) {
 		`
 	out := Sort(in)
 
-	JsonCompare(t, out, expectedJsonStr, false)
-}
-
-func JsonCompare(t *testing.T, out interface{}, expectedJsonStr string, print bool) {
-	outJsonStr, err := json.MarshalIndent(out, "", "  ")
-	if err != nil {
-		t.Fatal("error marshaling package", err)
-	}
-	if print {
-		fmt.Println(string(outJsonStr))
-	}
-	diffOpts := jsondiff.DefaultConsoleOptions()
-	res, diff := jsondiff.Compare([]byte(expectedJsonStr), []byte(outJsonStr), &diffOpts)
-
-	if res != jsondiff.FullMatch {
-		t.Errorf("the expected result is not equal to what we have: \n %s", diff)
-	}
+	gojsonut.JsonCompare(t, out, expectedJsonStr, false)
 }

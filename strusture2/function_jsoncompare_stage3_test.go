@@ -63,5 +63,5 @@ func TestSortJsonCompareStage3(t *testing.T) {
 		`
 	out := Sort(in)
 
-	gojsonut.JsonCompare(t, out, expectedJsonStr, false)
+	gojsonut.JsonCompare(t, out, expectedJsonStr)
 }

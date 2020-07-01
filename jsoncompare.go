@@ -8,10 +8,10 @@ import (
 	"github.com/nsf/jsondiff"
 )
 
-func JsonCompare(t *testing.T, out interface{}, expectedJsonStr string, print bool) {
-	outJsonStr, err := json.MarshalIndent(out, "", "  ")
+func JsonCompare(t *testing.T, result interface{}, expectedJsonStr string, print bool) {
+	outJsonStr, err := json.MarshalIndent(result, "", "    ")
 	if err != nil {
-		t.Fatal("error marshaling package", err)
+		t.Fatal("error marshaling the result: ", err)
 	}
 	if print {
 		fmt.Println(string(outJsonStr))
